@@ -9,5 +9,4 @@ app.use(express.static('dist'))
 app.listen(PORT, () => {
   /* eslint-disable no-console */
   console.log(`server started on port ${PORT}`)
-  /* eslint-disable no-console */
 })

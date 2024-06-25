@@ -10,6 +10,9 @@ const { defineConfig, devices } = require('@playwright/test')
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
+
+const PORT = process.env.PORT || 8080
+
 module.exports = defineConfig({
   testDir: './e2e-tests',
   /* Run tests in files in parallel */
@@ -25,7 +28,7 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'http://127.0.0.1:8080',
+    baseURL: `http://127.0.0.1:${PORT}`,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -72,7 +75,7 @@ module.exports = defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npm run start',
-    url: 'http://127.0.0.1:8080',
+    url: `http://127.0.0.1:${PORT}`,
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
   },
